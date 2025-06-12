@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageIcon>logo_v02.png</PackageIcon>
+        <RootNamespace>Botticelli.Moderation.Api</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="logo_v02.png">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\botticelli\Botticelli.Framework.Telegram\Botticelli.Framework.Telegram.csproj" />
+        <ProjectReference Include="..\..\botticelli\Botticelli.Framework\Botticelli.Framework.csproj"/>
+        <ProjectReference Include="..\..\botticelli\Botticelli.Interfaces\Botticelli.Interfaces.csproj"/>
+        <ProjectReference Include="..\..\botticelli\Botticelli.Shared\Botticelli.Shared.csproj"/>
+        <ProjectReference Include="..\Botticelli.Moderation.Filters\Botticelli.Moderation.Filters.csproj" />
+    </ItemGroup>
+
+</Project>

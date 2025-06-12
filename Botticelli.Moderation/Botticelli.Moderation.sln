@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Integration", "Botticelli.Moderation.Integration\Botticelli.Moderation.Integration.csproj", "{3540FF6D-5577-4661-BDAC-E4943D785548}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Integration.Telegram", "Botticelli.Moderation.Integration.Telegram\Botticelli.Moderation.Integration.Telegram.csproj", "{3540FF6D-5577-4661-BDAC-E4943D785548}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Filters", "Botticelli.Moderation.Filters\Botticelli.Moderation.Filters.csproj", "{D8B6D2E6-E116-4E31-9A21-41A970B6E6DB}"
 EndProject
@@ -31,6 +31,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Bot.Interfaces", "..\botticelli\Botticelli.Bot.Interfaces\Botticelli.Bot.Interfaces.csproj", "{726B7459-B2ED-4A2C-ADD4-4638600417D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Client.Analytics", "..\botticelli\Botticelli.Client.Analytics\Botticelli.Client.Analytics.csproj", "{A519818E-6F89-4B4F-8CE2-AAD75AB85555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Framework.Telegram", "..\botticelli\Botticelli.Framework.Telegram\Botticelli.Framework.Telegram.csproj", "{32BC6B80-0243-47F2-B462-E646EAE94436}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Controls", "..\botticelli\Botticelli.Controls\Botticelli.Controls.csproj", "{E85C18C7-F22D-4713-9EEC-BEE1A95E2CF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +102,14 @@ Global
 		{A519818E-6F89-4B4F-8CE2-AAD75AB85555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A519818E-6F89-4B4F-8CE2-AAD75AB85555}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A519818E-6F89-4B4F-8CE2-AAD75AB85555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32BC6B80-0243-47F2-B462-E646EAE94436}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32BC6B80-0243-47F2-B462-E646EAE94436}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32BC6B80-0243-47F2-B462-E646EAE94436}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32BC6B80-0243-47F2-B462-E646EAE94436}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E85C18C7-F22D-4713-9EEC-BEE1A95E2CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E85C18C7-F22D-4713-9EEC-BEE1A95E2CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E85C18C7-F22D-4713-9EEC-BEE1A95E2CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E85C18C7-F22D-4713-9EEC-BEE1A95E2CF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{36846120-6B1C-4926-8A02-A0A305CB1898} = {0263DEF3-E739-4402-8262-FB7CAFFB9816}
@@ -111,5 +123,7 @@ Global
 		{0B66166A-458E-4C5C-A6D8-9241B6FEE6CA} = {0263DEF3-E739-4402-8262-FB7CAFFB9816}
 		{726B7459-B2ED-4A2C-ADD4-4638600417D0} = {0263DEF3-E739-4402-8262-FB7CAFFB9816}
 		{A519818E-6F89-4B4F-8CE2-AAD75AB85555} = {0263DEF3-E739-4402-8262-FB7CAFFB9816}
+		{32BC6B80-0243-47F2-B462-E646EAE94436} = {0263DEF3-E739-4402-8262-FB7CAFFB9816}
+		{E85C18C7-F22D-4713-9EEC-BEE1A95E2CF3} = {0263DEF3-E739-4402-8262-FB7CAFFB9816}
 	EndGlobalSection
 EndGlobal
