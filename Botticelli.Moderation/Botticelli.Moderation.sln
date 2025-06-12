@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Api", "Botticelli.Moderation.Api\Botticelli.Moderation.Api.csproj", "{3540FF6D-5577-4661-BDAC-E4943D785548}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Filters", "Botticelli.Moderation.Filters\Botticelli.Moderation.Filters.csproj", "{D8B6D2E6-E116-4E31-9A21-41A970B6E6DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Decisions", "Botticelli.Moderation.Decisions\Botticelli.Moderation.Decisions.csproj", "{BC9952F6-3593-4383-8ACF-7E98D311ACCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Executors", "Botticelli.Moderation.Executors\Botticelli.Moderation.Executors.csproj", "{BB9F94A6-ADA2-4DFE-ADD5-8C997ECE1834}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3540FF6D-5577-4661-BDAC-E4943D785548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3540FF6D-5577-4661-BDAC-E4943D785548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3540FF6D-5577-4661-BDAC-E4943D785548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3540FF6D-5577-4661-BDAC-E4943D785548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B6D2E6-E116-4E31-9A21-41A970B6E6DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B6D2E6-E116-4E31-9A21-41A970B6E6DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B6D2E6-E116-4E31-9A21-41A970B6E6DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B6D2E6-E116-4E31-9A21-41A970B6E6DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC9952F6-3593-4383-8ACF-7E98D311ACCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC9952F6-3593-4383-8ACF-7E98D311ACCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC9952F6-3593-4383-8ACF-7E98D311ACCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC9952F6-3593-4383-8ACF-7E98D311ACCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB9F94A6-ADA2-4DFE-ADD5-8C997ECE1834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB9F94A6-ADA2-4DFE-ADD5-8C997ECE1834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB9F94A6-ADA2-4DFE-ADD5-8C997ECE1834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB9F94A6-ADA2-4DFE-ADD5-8C997ECE1834}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
