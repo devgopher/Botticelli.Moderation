@@ -4,6 +4,8 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageIcon>logo_v02.png</PackageIcon>
+        <RootNamespace>Botticelli.Moderation.Api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
