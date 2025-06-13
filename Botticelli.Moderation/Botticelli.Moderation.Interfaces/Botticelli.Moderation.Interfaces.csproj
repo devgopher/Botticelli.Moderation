@@ -2,13 +2,17 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <RootNamespace>Botticelli.Moderation.Integration.Telegram.Interfaces</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Telegram.Bot" Version="22.5.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
         <ProjectReference Include="..\..\botticelli\Botticelli.Shared\Botticelli.Shared.csproj"/>
-        <ProjectReference Include="..\Botticelli.Moderation.Interfaces\Botticelli.Moderation.Interfaces.csproj"/>
     </ItemGroup>
 
 </Project>

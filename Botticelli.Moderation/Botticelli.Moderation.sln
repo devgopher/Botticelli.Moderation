@@ -36,6 +36,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Framework.Telegr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Controls", "..\botticelli\Botticelli.Controls\Botticelli.Controls.csproj", "{E85C18C7-F22D-4713-9EEC-BEE1A95E2CF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Interfaces", "Botticelli.Moderation.Interfaces\Botticelli.Moderation.Interfaces.csproj", "{D7158A2F-1871-4989-A10B-8529F6E97F01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Integration", "Botticelli.Moderation.Integration\Botticelli.Moderation.Integration.csproj", "{7E233672-6655-4C49-8C99-2B8F4D211CE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +114,14 @@ Global
 		{E85C18C7-F22D-4713-9EEC-BEE1A95E2CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E85C18C7-F22D-4713-9EEC-BEE1A95E2CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E85C18C7-F22D-4713-9EEC-BEE1A95E2CF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7158A2F-1871-4989-A10B-8529F6E97F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7158A2F-1871-4989-A10B-8529F6E97F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7158A2F-1871-4989-A10B-8529F6E97F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7158A2F-1871-4989-A10B-8529F6E97F01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{36846120-6B1C-4926-8A02-A0A305CB1898} = {0263DEF3-E739-4402-8262-FB7CAFFB9816}

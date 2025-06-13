@@ -1,9 +1,11 @@
+using Botticelli.Moderation.Integration.Telegram.Interfaces;
+
 namespace Botticelli.Moderation.Filters;
 
 /// <summary>
 /// Message filtering result
 /// </summary>
-public class FilterResult
+public class FilterResult : IFilterResult
 {
     private bool _passed;
     
