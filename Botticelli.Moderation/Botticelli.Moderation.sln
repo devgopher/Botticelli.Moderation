@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Inter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Integration", "Botticelli.Moderation.Integration\Botticelli.Moderation.Integration.csproj", "{7E233672-6655-4C49-8C99-2B8F4D211CE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Shared", "Botticelli.Moderation.Shared\Botticelli.Moderation.Shared.csproj", "{56AA6E9E-5917-42E9-8471-A3C351E02ABE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -122,6 +124,10 @@ Global
 		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56AA6E9E-5917-42E9-8471-A3C351E02ABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56AA6E9E-5917-42E9-8471-A3C351E02ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56AA6E9E-5917-42E9-8471-A3C351E02ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56AA6E9E-5917-42E9-8471-A3C351E02ABE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{36846120-6B1C-4926-8A02-A0A305CB1898} = {0263DEF3-E739-4402-8262-FB7CAFFB9816}

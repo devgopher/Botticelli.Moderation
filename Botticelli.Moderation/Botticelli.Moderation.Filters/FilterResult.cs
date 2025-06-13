@@ -1,4 +1,5 @@
 using Botticelli.Moderation.Integration.Telegram.Interfaces;
+using Botticelli.Shared.ValueObjects;
 
 namespace Botticelli.Moderation.Filters;
 
@@ -9,21 +10,18 @@ public class FilterResult : IFilterResult
 {
     private bool _passed;
     
-    /// <summary>
-    /// Message ID
-    /// </summary>
+    /// <inheritdoc/>
     public required string MessageId { get; set; }
-    
-    /// <summary>
-    /// Passed or not
-    /// </summary>
+
+    /// <inheritdoc/>
+    public required Message Message { get; set; }
+
+    /// <inheritdoc/>
     public bool Passed {
         get => Errors.Length == 0 && _passed;
         set => _passed = value; 
     }
 
-    /// <summary>
-    /// Errors occurred during filtration
-    /// </summary>
+    /// <inheritdoc/>
     public string[] Errors { get; set; } = [];
 }

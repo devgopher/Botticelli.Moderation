@@ -22,6 +22,7 @@ public class FilterChain(IReadOnlyCollection<IFilter> filters) : IFilter
                 return new FilterResult
                 {
                     MessageId = message.Uid ?? string.Empty,
+                    Message = message,
                     Passed = false,
                     Errors =
                     [
@@ -35,6 +36,7 @@ public class FilterChain(IReadOnlyCollection<IFilter> filters) : IFilter
             var result = new FilterResult
             {
                 MessageId = message.Uid ?? string.Empty,
+                Message = message,
                 Passed = results.All(r => r.Passed),
                 Errors = results.Where(r => !r.Passed).SelectMany(r => r.Errors).ToArray()
             };
@@ -45,6 +47,7 @@ public class FilterChain(IReadOnlyCollection<IFilter> filters) : IFilter
             return new FilterResult
             {
                 MessageId = message.Uid ?? string.Empty,
+                Message = message,
                 Passed = false,
                 Errors = [ex.Message]
             };

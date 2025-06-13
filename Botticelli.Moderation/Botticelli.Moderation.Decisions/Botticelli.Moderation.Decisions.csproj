@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Botticelli.Moderation.Interfaces\Botticelli.Moderation.Interfaces.csproj" />
+      <ProjectReference Include="..\Botticelli.Moderation.Shared\Botticelli.Moderation.Shared.csproj" />
+    </ItemGroup>
+
 </Project>

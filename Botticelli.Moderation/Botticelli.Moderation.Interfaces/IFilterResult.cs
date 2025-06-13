@@ -1,4 +1,6 @@
-﻿namespace Botticelli.Moderation.Integration.Telegram.Interfaces;
+﻿using Botticelli.Shared.ValueObjects;
+
+namespace Botticelli.Moderation.Integration.Telegram.Interfaces;
 
 public interface IFilterResult
 {
@@ -7,6 +9,11 @@ public interface IFilterResult
     /// </summary>
     string MessageId { get; set; }
 
+    /// <summary>
+    /// Message for a further decision
+    /// </summary>
+    public Message Message { get; set; }
+    
     /// <summary>
     /// Passed or not
     /// </summary>
