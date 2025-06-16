@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Botticelli.Moderation.Filters\Botticelli.Moderation.Filters.csproj" />
       <ProjectReference Include="..\Botticelli.Moderation.Interfaces\Botticelli.Moderation.Interfaces.csproj" />
       <ProjectReference Include="..\Botticelli.Moderation.Shared\Botticelli.Moderation.Shared.csproj" />
     </ItemGroup>
