@@ -19,7 +19,7 @@ public sealed class Decision
     /// Gets or sets the reasons for the decision.
     /// This property can contain multiple reasons as an array of strings.
     /// </summary>
-    public required string[] Reasons { get; set; }
+    public required List<string> Reasons { get; set; }
 
     /// <summary>
     /// Gets or sets the date and time when the decision was made, in UTC.
@@ -33,5 +33,5 @@ public sealed class Decision
     /// <item><description>BanTerm: Represents the duration of a ban (e.g., "BanTerm" = TimeSpan.FromDays(3)).</description></item>
     /// </list>
     /// </summary>
-    public string[]? AdditionalParams { get; set; }
+    public List<string>? AdditionalParams { get; set; }
 }

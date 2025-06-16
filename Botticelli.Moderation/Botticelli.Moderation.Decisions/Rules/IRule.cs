@@ -17,6 +17,7 @@ public interface IRule
     /// Executes the rule and returns a decision based on the filter result.
     /// </summary>
     /// <param name="filterResult">The filter result used to make the decision.</param>
+    /// <param name="token"></param>
     /// <returns>The resulting <see cref="Decision"/> based on the rule.</returns>
-    Decision Execute(FilterResult filterResult);
+    Task<Decision> Execute(FilterResult filterResult, CancellationToken token);
 }
