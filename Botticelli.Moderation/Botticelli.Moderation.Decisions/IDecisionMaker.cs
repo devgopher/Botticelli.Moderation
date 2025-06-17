@@ -1,4 +1,6 @@
-﻿using Botticelli.Moderation.Filters;
+﻿using Botticelli.Moderation.Decisions.Rules;
+using Botticelli.Moderation.Filters;
+using Botticelli.Moderation.Integration.Telegram.Interfaces;
 using Botticelli.Moderation.Shared;
 
 namespace Botticelli.Moderation.Decisions;
@@ -19,5 +21,5 @@ public interface IDecisionMaker
     /// <param name="filterResult">The filter result used to determine the decision.</param>
     /// <param name="cancellationToken">A cancellation token to signal the operation's cancellation.</param>
     /// <returns>A task that represents the asynchronous operation, containing the resulting <see cref="Decision" />.</returns>
-    public Task<Decision> MakeDecision(FilterResult filterResult, CancellationToken cancellationToken);
+    public Task<Decision> MakeDecision(IFilterResult filterResult, CancellationToken cancellationToken);
 }

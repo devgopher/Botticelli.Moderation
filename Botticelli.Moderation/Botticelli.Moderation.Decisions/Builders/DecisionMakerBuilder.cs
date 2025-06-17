@@ -1,3 +1,5 @@
+using Botticelli.Moderation.Decisions.Rules;
+
 namespace Botticelli.Moderation.Decisions.Builders;
 
 /// <summary>

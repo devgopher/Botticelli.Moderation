@@ -26,7 +26,7 @@ public class FilterChain(IReadOnlyCollection<IFilter> filters) : IFilter
                     Passed = false,
                     Errors =
                     [
-                        "No filters ia an chain!"
+                        "No filters in a chain!"
                     ]
                 };
 

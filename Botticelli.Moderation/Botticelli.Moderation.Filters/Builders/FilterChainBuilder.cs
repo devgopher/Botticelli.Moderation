@@ -1,4 +1,6 @@
-﻿using Botticelli.Moderation.Integration.Telegram.Interfaces;
+﻿using Botticelli.Moderation.Filters.Factories;
+using Botticelli.Moderation.Integration.Telegram.Interfaces;
+using Botticelli.Shared.ValueObjects;
 
 namespace Botticelli.Moderation.Filters.Builders;
 
@@ -24,6 +26,18 @@ public class FilterChainBuilder : IFilterChainBuilder
     public IFilterChainBuilder WithFilter(IFilter filter)
     {
         _filters.Add(filter);
+        return this;
+    }
+    
+    
+    /// <summary>
+    /// Adds a func-based filter to the chain
+    /// </summary>
+    /// <returns>Current builder instance</returns>
+    public IFilterChainBuilder WithFuncFilter(Func<Message, IFilterResult> action)
+    {
+        _filters.Add(FilterFactory.CreateFuncBasedFilter(action));
+        
         return this;
     }
 

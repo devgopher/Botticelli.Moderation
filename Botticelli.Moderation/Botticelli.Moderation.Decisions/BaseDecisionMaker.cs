@@ -1,4 +1,6 @@
+using Botticelli.Moderation.Decisions.Rules;
 using Botticelli.Moderation.Filters;
+using Botticelli.Moderation.Integration.Telegram.Interfaces;
 using Botticelli.Moderation.Shared;
 
 namespace Botticelli.Moderation.Decisions;
@@ -27,7 +29,7 @@ public abstract class BaseDecisionMaker : IDecisionMaker
     /// <param name="filterResult">The filter result used to determine the decision.</param>
     /// <param name="cancellationToken">A cancellation token to signal the operation's cancellation.</param>
     /// <returns>A task that represents the asynchronous operation, containing the resulting <see cref="Decision" />.</returns>
-    public async Task<Decision> MakeDecision(FilterResult filterResult, CancellationToken cancellationToken)
+    public async Task<Decision> MakeDecision(IFilterResult filterResult, CancellationToken cancellationToken)
     {
         // Implement decision-making logic based on the rules
         var decision = new Decision
@@ -53,7 +55,7 @@ public abstract class BaseDecisionMaker : IDecisionMaker
         return decision;
     }
 
-    private static async Task GetDecisionByRule(FilterResult filterResult, CancellationToken cancellationToken,
+    private static async Task GetDecisionByRule(IFilterResult filterResult, CancellationToken cancellationToken,
         IRule rule, Decision? decision)
     {
         var execute = await ApplyRule(filterResult, rule, cancellationToken);
@@ -70,5 +72,5 @@ public abstract class BaseDecisionMaker : IDecisionMaker
         }
     }
 
-    private static async Task<Decision?> ApplyRule(FilterResult filterResult, IRule rule, CancellationToken token) => rule.IsApplicable(filterResult) ? await rule.Execute(filterResult, token) : null;
+    private static async Task<Decision?> ApplyRule(IFilterResult filterResult, IRule rule, CancellationToken token) => rule.IsApplicable(filterResult) ? await rule.Execute(filterResult, token) : null;
 }

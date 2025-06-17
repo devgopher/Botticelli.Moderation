@@ -1,4 +1,7 @@
-﻿namespace Botticelli.Moderation.Integration.Telegram.Interfaces;
+﻿using System;
+using Botticelli.Shared.ValueObjects;
+
+namespace Botticelli.Moderation.Integration.Telegram.Interfaces;
 
 public interface IFilterChainBuilder
 {
@@ -16,6 +19,12 @@ public interface IFilterChainBuilder
     /// <returns>Current builder instance</returns>
     IFilterChainBuilder WithFilter<TFilter>() where TFilter : IFilter, new();
 
+    /// <summary>
+    /// Adds a func-based filter to the chain
+    /// </summary>
+    /// <returns>Current builder instance</returns>
+    public IFilterChainBuilder WithFuncFilter(Func<Message, IFilterResult> action);
+    
     /// <summary>
     /// Has initialized filters or not
     /// </summary>
