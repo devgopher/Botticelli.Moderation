@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Integ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Shared", "Botticelli.Moderation.Shared\Botticelli.Moderation.Shared.csproj", "{56AA6E9E-5917-42E9-8471-A3C351E02ABE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Filters.Tests", "Botticelli.Moderation.Filters.Tests\Botticelli.Moderation.Filters.Tests.csproj", "{5CBA1487-CFAE-41EA-99F3-5A98E7680A4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,6 +130,10 @@ Global
 		{56AA6E9E-5917-42E9-8471-A3C351E02ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56AA6E9E-5917-42E9-8471-A3C351E02ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56AA6E9E-5917-42E9-8471-A3C351E02ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CBA1487-CFAE-41EA-99F3-5A98E7680A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CBA1487-CFAE-41EA-99F3-5A98E7680A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CBA1487-CFAE-41EA-99F3-5A98E7680A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CBA1487-CFAE-41EA-99F3-5A98E7680A4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{36846120-6B1C-4926-8A02-A0A305CB1898} = {0263DEF3-E739-4402-8262-FB7CAFFB9816}

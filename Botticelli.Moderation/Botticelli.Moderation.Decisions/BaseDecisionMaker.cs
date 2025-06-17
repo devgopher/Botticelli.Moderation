@@ -12,6 +12,8 @@ public abstract class BaseDecisionMaker : IDecisionMaker
 {
     private readonly bool _parallelInvocation = false;
     public List<IRule> Rules { get; }
+    private readonly SemaphoreSlim _semaphoreSlim = new(1, 1);
+
 
 
     /// <summary>
@@ -29,7 +31,7 @@ public abstract class BaseDecisionMaker : IDecisionMaker
     /// <param name="filterResult">The filter result used to determine the decision.</param>
     /// <param name="cancellationToken">A cancellation token to signal the operation's cancellation.</param>
     /// <returns>A task that represents the asynchronous operation, containing the resulting <see cref="Decision" />.</returns>
-    public async Task<Decision> MakeDecision(IFilterResult filterResult, CancellationToken cancellationToken)
+    public virtual async Task<Decision> MakeDecision(IFilterResult filterResult, CancellationToken cancellationToken)
     {
         // Implement decision-making logic based on the rules
         var decision = new Decision
@@ -55,19 +57,26 @@ public abstract class BaseDecisionMaker : IDecisionMaker
         return decision;
     }
 
-    private static async Task GetDecisionByRule(IFilterResult filterResult, CancellationToken cancellationToken,
+    private async Task GetDecisionByRule(IFilterResult filterResult, CancellationToken cancellationToken,
         IRule rule, Decision? decision)
     {
         var execute = await ApplyRule(filterResult, rule, cancellationToken);
         
         if (execute != null && execute.Reasons.Any())
         {
-            
-            decision?.Reasons.AddRange(execute.Reasons);
             if (decision != null)
             {
-                decision.Comments = execute.Comments;
-                decision.AdditionalParams = execute.AdditionalParams ?? [];
+                await _semaphoreSlim.WaitAsync(cancellationToken);
+                try
+                {
+                    decision.Comments = execute.Comments;
+                    decision.Reasons.AddRange(execute.Reasons);
+                    decision.AdditionalParams?.AddRange(execute.AdditionalParams ?? []);
+                }
+                finally
+                {
+                    _semaphoreSlim.Release();
+                }
             }
         }
     }

@@ -33,5 +33,5 @@ public sealed class Decision
     /// <item><description>BanTerm: Represents the duration of a ban (e.g., "BanTerm" = TimeSpan.FromDays(3)).</description></item>
     /// </list>
     /// </summary>
-    public List<string>? AdditionalParams { get; set; }
+    public List<string>? AdditionalParams { get; set; } = new(10);
 }
