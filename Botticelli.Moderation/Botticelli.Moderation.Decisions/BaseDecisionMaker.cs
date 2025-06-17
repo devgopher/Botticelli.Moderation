@@ -1,5 +1,4 @@
 using Botticelli.Moderation.Decisions.Rules;
-using Botticelli.Moderation.Filters;
 using Botticelli.Moderation.Integration.Telegram.Interfaces;
 using Botticelli.Moderation.Shared;
 
@@ -11,10 +10,7 @@ namespace Botticelli.Moderation.Decisions;
 public abstract class BaseDecisionMaker : IDecisionMaker
 {
     private readonly bool _parallelInvocation = false;
-    public List<IRule> Rules { get; }
     private readonly SemaphoreSlim _semaphoreSlim = new(1, 1);
-
-
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="rules" /> class with the specified rules.
@@ -24,6 +20,8 @@ public abstract class BaseDecisionMaker : IDecisionMaker
     {
         Rules = [..rules];
     }
+
+    public List<IRule> Rules { get; }
 
     /// <summary>
     ///     Asynchronously makes a decision based on the provided filter result.
@@ -48,28 +46,32 @@ public abstract class BaseDecisionMaker : IDecisionMaker
             foreach (var rule in Rules)
                 await GetDecisionByRule(filterResult, cancellationToken, rule, decision).ConfigureAwait(false);
         else
-            await Parallel.ForEachAsync(Rules, cancellationToken, async (rule, token) =>
-            {
-                await GetDecisionByRule(filterResult, token, rule, decision);
-            });
+            await Parallel.ForEachAsync(Rules, cancellationToken,
+                async (rule, token) => { await GetDecisionByRule(filterResult, token, rule, decision); });
 
         // Return a default decision if no rules apply
         return decision;
     }
 
+    /// <summary>
+    ///     Gets decision using a particular rule
+    /// </summary>
+    /// <param name="filterResult"></param>
+    /// <param name="cancellationToken"></param>
+    /// <param name="rule"></param>
+    /// <param name="decision"></param>
     private async Task GetDecisionByRule(IFilterResult filterResult, CancellationToken cancellationToken,
         IRule rule, Decision? decision)
     {
         var execute = await ApplyRule(filterResult, rule, cancellationToken);
-        
+
         if (execute != null && execute.Reasons.Any())
-        {
             if (decision != null)
             {
                 await _semaphoreSlim.WaitAsync(cancellationToken);
                 try
                 {
-                    decision.Comments = execute.Comments;
+                    decision.Comments += $"\n{execute.Comments}";
                     decision.Reasons.AddRange(execute.Reasons);
                     decision.AdditionalParams?.AddRange(execute.AdditionalParams ?? []);
                 }
@@ -78,8 +80,18 @@ public abstract class BaseDecisionMaker : IDecisionMaker
                     _semaphoreSlim.Release();
                 }
             }
-        }
     }
 
-    private static async Task<Decision?> ApplyRule(IFilterResult filterResult, IRule rule, CancellationToken token) => rule.IsApplicable(filterResult) ? await rule.Execute(filterResult, token) : null;
+
+    /// <summary>
+    ///     Applies a particular rule
+    /// </summary>
+    /// <param name="filterResult"></param>
+    /// <param name="rule"></param>
+    /// <param name="token"></param>
+    /// <returns></returns>
+    private static async Task<Decision?> ApplyRule(IFilterResult filterResult, IRule rule, CancellationToken token)
+    {
+        return rule.IsApplicable(filterResult) ? await rule.Execute(filterResult, token) : null;
+    }
 }
