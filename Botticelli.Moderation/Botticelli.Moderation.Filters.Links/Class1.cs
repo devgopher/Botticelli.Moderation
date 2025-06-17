@@ -1,5 +1,28 @@
-﻿namespace Botticelli.Moderation.Filters.Links;
+﻿using System.Text.RegularExpressions;
+using Botticelli.Moderation.Integration.Telegram.Interfaces;
+using Botticelli.Shared.ValueObjects;
 
-public class Class1
+namespace Botticelli.Moderation.Filters.Links;
+
+public class LinkFilterBase : FilterBase
 {
+    private const string Pattern = @"\bhttps?://\S+\b";
+
+    public override async Task<IFilterResult> FilterMessageAsync(Message message,
+        CancellationToken cancellationToken = default)
+    {
+        var result = new FilterResult
+        {
+            MessageId = message.Uid!,
+            Message = message
+        };
+
+        if (message.Body != null && Regex.IsMatch(message.Body, Pattern))
+        {
+            result.Passed = false;
+            result.Errors = ["An http link was found!"];
+        }
+        
+        return result;
+    }
 }
