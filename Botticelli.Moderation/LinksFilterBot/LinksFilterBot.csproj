@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Version>0.1.0</Version>
+        <Company>Botticelli</Company>
+        <Copyright>Igor Evdokimov</Copyright>
+        <PackageProjectUrl>https://github.com/devgopher/botticelli</PackageProjectUrl>
+        <PackageIcon>logo.jpg</PackageIcon>
+        <RepositoryUrl>https://github.com/devgopher/botticelli</RepositoryUrl>
+        <RootNamespace>TelegramMessagingSample</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\botticelli\Botticelli.Framework.Telegram\Botticelli.Framework.Telegram.csproj" />
+      <ProjectReference Include="..\..\botticelli\Botticelli.Framework\Botticelli.Framework.csproj" />
+      <ProjectReference Include="..\Botticelli.Moderation.Integration.Telegram\Botticelli.Moderation.Integration.Telegram.csproj" />
+    </ItemGroup>
+
+</Project>

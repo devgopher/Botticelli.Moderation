@@ -13,7 +13,7 @@ public static class FilterFactory
     /// </summary>
     /// <param name="action">The function to be used as the filter action.</param>
     /// <returns>An instance of FuncBasedFilter.</returns>
-    public static FilterBase CreateFuncBasedFilter(Func<Message, IFilterResult> action)
+    public static FuncFilter CreateFuncBasedFilter(Func<Message, IFilterResult> action)
     {
         if (action == null) throw new ArgumentNullException(nameof(action), "Filter action cannot be null.");
 

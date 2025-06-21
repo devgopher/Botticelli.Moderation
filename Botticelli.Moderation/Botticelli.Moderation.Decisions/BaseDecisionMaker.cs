@@ -34,8 +34,7 @@ public abstract class BaseDecisionMaker : IDecisionMaker
         // Implement decision-making logic based on the rules
         var decision = new Decision
         {
-            Id = Guid.NewGuid()
-                .ToString(),
+            Id = Guid.NewGuid().ToString(),
             Comments = string.Empty,
             Reasons = [],
             UtcDateTime = DateTime.UtcNow,
@@ -65,23 +64,21 @@ public abstract class BaseDecisionMaker : IDecisionMaker
     {
         var execute = await ApplyRule(filterResult, rule, cancellationToken);
 
-        if (execute != null && execute.Reasons.Any())
-            if (decision != null)
+        if (execute != null && execute.Reasons.Count != 0 && decision != null)
+        {
+            await _semaphoreSlim.WaitAsync(cancellationToken);
+            try
             {
-                await _semaphoreSlim.WaitAsync(cancellationToken);
-                try
-                {
-                    decision.Comments += $"\n{execute.Comments}";
-                    decision.Reasons.AddRange(execute.Reasons);
-                    decision.AdditionalParams?.AddRange(execute.AdditionalParams ?? []);
-                }
-                finally
-                {
-                    _semaphoreSlim.Release();
-                }
+                decision.Comments += $"\n{execute.Comments}";
+                decision.Reasons.AddRange(execute.Reasons);
+                decision.AdditionalParams?.AddRange(execute.AdditionalParams ?? []);
             }
+            finally
+            {
+                _semaphoreSlim.Release();
+            }
+        }
     }
-
 
     /// <summary>
     ///     Applies a particular rule

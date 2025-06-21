@@ -4,11 +4,11 @@ using Botticelli.Shared.ValueObjects;
 
 namespace Botticelli.Moderation.Filters.Links;
 
-public class LinkFilterBase : FilterBase
+public class LinkFilter : FilterBase
 {
     private const string Pattern = @"\bhttps?://\S+\b";
 
-    public override async Task<IFilterResult> FilterMessageAsync(Message message,
+    public override Task<IFilterResult> FilterMessageAsync(Message message,
         CancellationToken cancellationToken = default)
     {
         var result = new FilterResult
@@ -17,12 +17,12 @@ public class LinkFilterBase : FilterBase
             Message = message
         };
 
-        if (message.Body != null && Regex.IsMatch(message.Body, Pattern))
-        {
-            result.Passed = false;
-            result.Errors = ["An http link was found!"];
-        }
+        if (message.Body == null || !Regex.IsMatch(message.Body, Pattern))
+            return Task.FromResult<IFilterResult>(result);
         
-        return result;
+        result.Passed = false;
+        result.Errors = ["An http link was found!"];
+
+        return Task.FromResult<IFilterResult>(result);
     }
 }
