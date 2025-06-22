@@ -12,4 +12,8 @@
       <ProjectReference Include="..\Botticelli.Moderation.Shared\Botticelli.Moderation.Shared.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Rules\" />
+    </ItemGroup>
+
 </Project>

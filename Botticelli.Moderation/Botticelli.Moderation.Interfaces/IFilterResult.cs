@@ -1,6 +1,6 @@
 ﻿using Botticelli.Shared.ValueObjects;
 
-namespace Botticelli.Moderation.Integration.Telegram.Interfaces;
+namespace Botticelli.Moderation.Integration.Interfaces;
 
 public interface IFilterResult
 {

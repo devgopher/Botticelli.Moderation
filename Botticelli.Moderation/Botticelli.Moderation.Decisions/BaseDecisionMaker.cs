@@ -1,5 +1,4 @@
-using Botticelli.Moderation.Decisions.Rules;
-using Botticelli.Moderation.Integration.Telegram.Interfaces;
+using Botticelli.Moderation.Integration.Interfaces;
 using Botticelli.Moderation.Shared;
 
 namespace Botticelli.Moderation.Decisions;
@@ -7,11 +6,16 @@ namespace Botticelli.Moderation.Decisions;
 /// <summary>
 ///     An abstract base class for making decisions based on filter results, with support for rules.
 /// </summary>
-public abstract class BaseDecisionMaker : IDecisionMaker
+public class BaseDecisionMaker : IDecisionMaker
 {
     private readonly bool _parallelInvocation = false;
     private readonly SemaphoreSlim _semaphoreSlim = new(1, 1);
 
+    public BaseDecisionMaker()
+    {
+        Rules = new(5);
+    }
+    
     /// <summary>
     ///     Initializes a new instance of the <see cref="rules" /> class with the specified rules.
     /// </summary>

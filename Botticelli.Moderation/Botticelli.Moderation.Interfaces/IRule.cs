@@ -1,7 +1,8 @@
-using Botticelli.Moderation.Integration.Telegram.Interfaces;
+using System.Threading;
+using System.Threading.Tasks;
 using Botticelli.Moderation.Shared;
 
-namespace Botticelli.Moderation.Decisions.Rules;
+namespace Botticelli.Moderation.Integration.Interfaces;
 
 /// <summary>
 /// Defines a contract for a rule that can evaluate filter results.

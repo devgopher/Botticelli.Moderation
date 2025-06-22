@@ -1,5 +1,5 @@
 ﻿using System.Text.RegularExpressions;
-using Botticelli.Moderation.Integration.Telegram.Interfaces;
+using Botticelli.Moderation.Integration.Interfaces;
 using Botticelli.Shared.ValueObjects;
 
 namespace Botticelli.Moderation.Filters.Links;

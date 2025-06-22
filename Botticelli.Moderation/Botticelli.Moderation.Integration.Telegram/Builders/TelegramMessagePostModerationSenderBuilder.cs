@@ -1,22 +1,29 @@
 using Botticelli.Framework.Exceptions;
 using Botticelli.Framework.Telegram;
 using Botticelli.Framework.Telegram.Builders;
+using Botticelli.Moderation.Decisions;
+using Botticelli.Moderation.Decisions.Builders;
 using Botticelli.Moderation.Filters.Builders;
-using Botticelli.Moderation.Integration.Telegram.Interfaces;
+using Botticelli.Moderation.Integration.Interfaces;
 
 namespace Botticelli.Moderation.Api.Builders;
 
 /// <summary>
 ///     A builder class for MessagePostModerationSender
 /// </summary>
-public class TelegramMessagePostModerationSenderBuilder : 
-    TelegramBotBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>>, 
+public class TelegramMessagePostModerationSenderBuilder :
+    TelegramBotBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>>,
     IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>>
 {
+    private readonly List<IDecisionMaker> _decisionMakers = new();
     private readonly IFilterChainBuilder _filterChainBuilder = new FilterChainBuilder();
+    private IDecisionMakerBuilder _decisionMakerBuilder = new DecisionMakerBuilder<BaseDecisionMaker>();
+
     private IFilter? _filterChain;
 
-    protected TelegramMessagePostModerationSenderBuilder(bool isStandalone) : base(isStandalone) {}
+    protected TelegramMessagePostModerationSenderBuilder(bool isStandalone) : base(isStandalone)
+    {
+    }
 
     public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithFilter(IFilter filter)
     {
@@ -33,9 +40,49 @@ public class TelegramMessagePostModerationSenderBuilder :
         return this;
     }
 
-    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithFilter(Action<IFilterChainBuilder> actionBuilder)
+    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithFilter(
+        Action<IFilterChainBuilder> actionBuilder)
     {
         actionBuilder(_filterChainBuilder);
+
+        return this;
+    }
+
+    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithDecisionMaker(
+        Action<IDecisionMakerBuilder> actionBuilder)
+    {
+        actionBuilder(_decisionMakerBuilder);
+
+        var decisionMaker = _decisionMakerBuilder.Build();
+
+        _decisionMakers.Add(decisionMaker);
+
+        return this;
+    }
+
+    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithDecisionMaker(
+        IDecisionMakerBuilder decisionMakerBuilder)
+    {
+        _decisionMakerBuilder = decisionMakerBuilder;
+
+        return this;
+    }
+
+    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithExecutor(
+        Action<IExecutor<TelegramBot>> actionBuilder) => throw new NotImplementedException();
+
+    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>>
+        WithExecutor(IExecutor<TelegramBot> executor) => throw new NotImplementedException();
+
+    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>>
+        WithExecutor<TExecutor>(TExecutor executor) where TExecutor : IExecutor<TelegramBot> =>
+        throw new NotImplementedException();
+
+    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithDecisionMaker<
+        TDecisionMakerBuilder>()
+        where TDecisionMakerBuilder : IDecisionMakerBuilder, new()
+    {
+        _decisionMakerBuilder = new TDecisionMakerBuilder();
 
         return this;
     }
