@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Botticelli.Shared.ValueObjects;
 
-namespace Botticelli.Moderation.Integration.Telegram.Interfaces;
+namespace Botticelli.Moderation.Integration.Interfaces;
 
 public interface IFilter
 {

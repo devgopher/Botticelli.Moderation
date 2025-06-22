@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Botticelli.Moderation.Integration.Telegram.Interfaces;
+using Botticelli.Moderation.Integration.Interfaces;
 using Botticelli.Shared.ValueObjects;
 using FluentAssertions;
 using Moq;

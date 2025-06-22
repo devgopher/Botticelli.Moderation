@@ -1,6 +1,4 @@
-using Botticelli.Moderation.Decisions.Rules;
-
-namespace Botticelli.Moderation.Decisions.Builders;
+namespace Botticelli.Moderation.Integration.Interfaces;
 
 /// <summary>
 ///     Defines a contract for building a decision maker with specified rules.

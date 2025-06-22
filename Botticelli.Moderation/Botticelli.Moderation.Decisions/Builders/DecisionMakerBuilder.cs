@@ -1,4 +1,4 @@
-using Botticelli.Moderation.Decisions.Rules;
+using Botticelli.Moderation.Integration.Interfaces;
 
 namespace Botticelli.Moderation.Decisions.Builders;
 

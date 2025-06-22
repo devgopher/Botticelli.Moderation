@@ -1,5 +1,4 @@
-using Botticelli.Moderation.Decisions.Rules;
-using Botticelli.Moderation.Integration.Telegram.Interfaces;
+using Botticelli.Moderation.Integration.Interfaces;
 using Botticelli.Moderation.Shared;
 
 namespace Botticelli.Moderation.Decisions;
