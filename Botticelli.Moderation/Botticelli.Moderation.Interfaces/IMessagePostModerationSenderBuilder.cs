@@ -9,8 +9,8 @@ public interface IMessagePostModerationSenderBuilder<TBot, TBotBuilder> where TB
     public IMessagePostModerationSenderBuilder<TBot, TBotBuilder> WithFilter<TFilter>() where TFilter : IFilter, new();
     public IMessagePostModerationSenderBuilder<TBot, TBotBuilder> WithFilter(Action<IFilterChainBuilder> actionBuilder);
     
-    public IMessagePostModerationSenderBuilder<TBot, TBotBuilder> WithDecisionMaker(Action<IDecisionMakerBuilder> actionBuilder);
-    public IMessagePostModerationSenderBuilder<TBot, TBotBuilder> WithDecisionMaker(IDecisionMakerBuilder decisionMaker);
+    public IMessagePostModerationSenderBuilder<TBot, TBotBuilder> WithDecisionMaker(Action<IDecisionMakerBuilder> decisionMakerBuilder);
+    public IMessagePostModerationSenderBuilder<TBot, TBotBuilder> WithDecisionMaker(IDecisionMakerBuilder decisionMakerBuilder);
 
     public IMessagePostModerationSenderBuilder<TBot, TBotBuilder> WithDecisionMaker<TDecisionMakerBuilder>()
         where TDecisionMakerBuilder : IDecisionMakerBuilder, new();

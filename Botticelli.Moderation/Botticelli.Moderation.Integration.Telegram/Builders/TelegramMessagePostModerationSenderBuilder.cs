@@ -16,7 +16,7 @@ public class TelegramMessagePostModerationSenderBuilder :
 {
     private readonly List<IDecisionMaker> _decisionMakers = new();
     private readonly IFilterChainBuilder _filterChainBuilder = new FilterChainBuilder();
-    private IDecisionMakerBuilder _decisionMakerBuilder = new DecisionMakerBuilder<>();
+    private IDecisionMakerBuilder _decisionMakerBuilder = new DecisionMakerBuilder<IDecisionMaker>();
 
     private IFilter? _filterChain;
 
@@ -48,9 +48,9 @@ public class TelegramMessagePostModerationSenderBuilder :
     }
 
     public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithDecisionMaker(
-        Action<IDecisionMakerBuilder> actionBuilder)
+        Action<IDecisionMakerBuilder> decisionMakerBuilder)
     {
-        actionBuilder(_decisionMakerBuilder);
+        decisionMakerBuilder(_decisionMakerBuilder);
 
         var decisionMaker = _decisionMakerBuilder.Build();
 
@@ -66,6 +66,15 @@ public class TelegramMessagePostModerationSenderBuilder :
 
         return this;
     }
+    
+    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithDecisionMaker<
+        TDecisionMakerBuilder>()
+        where TDecisionMakerBuilder : IDecisionMakerBuilder, new()
+    {
+        _decisionMakerBuilder = new TDecisionMakerBuilder();
+
+        return this;
+    }
 
     public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithExecutor(
         Action<IExecutor<TelegramBot>> actionBuilder) => throw new NotImplementedException();
@@ -76,15 +85,6 @@ public class TelegramMessagePostModerationSenderBuilder :
     public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>>
         WithExecutor<TExecutor>(TExecutor executor) where TExecutor : IExecutor<TelegramBot> =>
         throw new NotImplementedException();
-
-    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>> WithDecisionMaker<
-        TDecisionMakerBuilder>()
-        where TDecisionMakerBuilder : IDecisionMakerBuilder, new()
-    {
-        _decisionMakerBuilder = new TDecisionMakerBuilder();
-
-        return this;
-    }
 
     public override TelegramBot? Build()
     {

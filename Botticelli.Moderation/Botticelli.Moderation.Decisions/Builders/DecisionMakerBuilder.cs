@@ -9,7 +9,6 @@ public class DecisionMakerBuilder<TDecisionMaker> : IDecisionMakerBuilder
 where TDecisionMaker : IDecisionMaker, new()
 {
     private readonly IList<IRule> _rules = new List<IRule>(5);
-    private TDecisionMaker? _decisionMaker;
     
     public IDecisionMakerBuilder WithRule(IRule rule)
     {
@@ -29,7 +28,7 @@ where TDecisionMaker : IDecisionMaker, new()
 
     public IDecisionMaker Build()
     {
-        _decisionMaker = new TDecisionMaker();
+        var _decisionMaker = new TDecisionMaker();
         _decisionMaker.Rules.AddRange(_rules);
 
         return _decisionMaker;
