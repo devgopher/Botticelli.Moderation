@@ -1,17 +1,21 @@
-﻿using Botticelli.Moderation.Api.Builders;
+﻿using Botticelli.Framework.Telegram.Extensions;
+using Botticelli.Moderation.Api.Builders;
+using Botticelli.Moderation.Decisions;
+using Botticelli.Moderation.Integration.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Botticelli.Moderation.Api.Extensions;
 
 public static class BotExtensions
 {
-    public static TelegramMessagePostModerationBotBuilder<> AddPostModeration(
-        this TelegramMessagePostModerationBotBuilder<> builder)
+    public static TelegramMessagePostModerationBotBuilder<TDecisionMaker> AddPostModerationBot<TDecisionMaker>(this IServiceCollection services, IConfiguration config) 
+        where TDecisionMaker : IDecisionMaker, new()
     {
-        builder.AddOnMessageReceived((sender, args) =>
+        var botBuilder = services.AddTelegramBot<TelegramMessagePostModerationBotBuilder<TDecisionMaker>>(config, botBuilder =>
         {
-            // TODO: all further business logic is here!
         });
-
-        return builder;
+        
+        return botBuilder;
     }
 }
