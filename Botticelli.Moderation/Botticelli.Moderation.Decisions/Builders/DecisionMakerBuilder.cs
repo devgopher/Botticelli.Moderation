@@ -5,33 +5,31 @@ namespace Botticelli.Moderation.Decisions.Builders;
 /// <summary>
 ///     <inheritdoc />
 /// </summary>
-public class DecisionMakerBuilder<TDecisionMaker> : IDecisionMakerBuilder
-where TDecisionMaker : IDecisionMaker, new()
+public class DecisionMakerBuilder<TDecisionMaker> : IDecisionMakerBuilder<TDecisionMaker>
+    where TDecisionMaker : IDecisionMaker, new()
 {
     private readonly IList<IRule> _rules = new List<IRule>(5);
-    private TDecisionMaker? _decisionMaker;
-    
-    public IDecisionMakerBuilder WithRule(IRule rule)
+
+    public IDecisionMakerBuilder<TDecisionMaker> WithRule(IRule rule)
     {
         _rules.Add(rule);
-        
+
         return this;
     }
-    
-    public IDecisionMakerBuilder WithRule<TRule>() where TRule : IRule, new()
+
+    public IDecisionMakerBuilder<TDecisionMaker> WithRule<TRule>() where TRule : IRule, new()
     {
         var rule = new TRule();
-        
         return WithRule(rule);
     }
 
     public bool HasRules => _rules.Count > 0;
 
-    public IDecisionMaker Build()
+    public TDecisionMaker Build()
     {
-        _decisionMaker = new TDecisionMaker();
-        _decisionMaker.Rules.AddRange(_rules);
+        var decisionMaker = new TDecisionMaker();
+        decisionMaker.Rules.AddRange(_rules);
 
-        return _decisionMaker;
+        return decisionMaker;
     }
 }

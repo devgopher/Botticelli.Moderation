@@ -4,8 +4,8 @@ namespace Botticelli.Moderation.Api.Extensions;
 
 public static class BotExtensions
 {
-    public static TelegramMessagePostModerationSenderBuilder AddPostModeration(
-        this TelegramMessagePostModerationSenderBuilder builder)
+    public static TelegramMessagePostModerationBotBuilder<> AddPostModeration(
+        this TelegramMessagePostModerationBotBuilder<> builder)
     {
         builder.AddOnMessageReceived((sender, args) =>
         {
