@@ -27,6 +27,11 @@ public sealed class Decision
     public DateTime UtcDateTime { get; set; }
 
     /// <summary>
+    /// Decision type (Warn, ban...)
+    /// </summary>
+    public DecisionType? Type { get; set; }
+    
+    /// <summary>
     /// Gets or sets additional parameters for the decision.
     /// This can include various optional parameters, such as:
     /// <list type="bullet">

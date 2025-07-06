@@ -76,6 +76,7 @@ public class BaseDecisionMaker : IDecisionMaker
                 decision.Comments += $"\n{execute.Comments}";
                 decision.Reasons.AddRange(execute.Reasons);
                 decision.AdditionalParams?.AddRange(execute.AdditionalParams ?? []);
+                decision.Type = execute.Type;
             }
             finally
             {

@@ -48,9 +48,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{BF37
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LinksFilter", "LinksFilter", "{7EBEF698-A382-4C0E-8B41-EFCDC8DA80B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Filters.Links", "Botticelli.Moderation.Filters.Links\Botticelli.Moderation.Filters.Links.csproj", "{A590ADC4-FF1D-4E97-8A0A-995B738BC886}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinksFilterBot.Filters.Links", "LinksFilterBot.Filters.Links\LinksFilterBot.Filters.Links.csproj", "{A590ADC4-FF1D-4E97-8A0A-995B738BC886}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinksFilterBot", "LinksFilterBot\LinksFilterBot.csproj", "{1FC2A1B4-EF4F-4DCB-A545-EF48744FA8BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinksFilterBot.Executors.Telegram", "LinksFilterBot.Executors.Telegram\LinksFilterBot.Executors.Telegram.csproj", "{4169B039-B733-41B9-A000-CF8D58312039}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkFilterBot.Decisions", "LinkFilterBot.Decisions\LinkFilterBot.Decisions.csproj", "{B909EE4F-9F25-436E-B9FB-E8F117C02085}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -150,6 +154,14 @@ Global
 		{1FC2A1B4-EF4F-4DCB-A545-EF48744FA8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FC2A1B4-EF4F-4DCB-A545-EF48744FA8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FC2A1B4-EF4F-4DCB-A545-EF48744FA8BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4169B039-B733-41B9-A000-CF8D58312039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4169B039-B733-41B9-A000-CF8D58312039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4169B039-B733-41B9-A000-CF8D58312039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4169B039-B733-41B9-A000-CF8D58312039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B909EE4F-9F25-436E-B9FB-E8F117C02085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B909EE4F-9F25-436E-B9FB-E8F117C02085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B909EE4F-9F25-436E-B9FB-E8F117C02085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B909EE4F-9F25-436E-B9FB-E8F117C02085}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{36846120-6B1C-4926-8A02-A0A305CB1898} = {0263DEF3-E739-4402-8262-FB7CAFFB9816}
@@ -168,5 +180,7 @@ Global
 		{7EBEF698-A382-4C0E-8B41-EFCDC8DA80B1} = {BF37ECE3-76A2-46C4-AAC6-347A06A74A11}
 		{A590ADC4-FF1D-4E97-8A0A-995B738BC886} = {7EBEF698-A382-4C0E-8B41-EFCDC8DA80B1}
 		{1FC2A1B4-EF4F-4DCB-A545-EF48744FA8BE} = {7EBEF698-A382-4C0E-8B41-EFCDC8DA80B1}
+		{4169B039-B733-41B9-A000-CF8D58312039} = {7EBEF698-A382-4C0E-8B41-EFCDC8DA80B1}
+		{B909EE4F-9F25-436E-B9FB-E8F117C02085} = {7EBEF698-A382-4C0E-8B41-EFCDC8DA80B1}
 	EndGlobalSection
 EndGlobal

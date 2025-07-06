@@ -12,10 +12,8 @@ public static class BotExtensions
     public static TelegramMessagePostModerationBotBuilder<TDecisionMaker> AddPostModerationBot<TDecisionMaker>(this IServiceCollection services, IConfiguration config) 
         where TDecisionMaker : IDecisionMaker, new()
     {
-        var botBuilder = services.AddTelegramBot<TelegramMessagePostModerationBotBuilder<TDecisionMaker>>(config, botBuilder =>
-        {
-        });
-        
-        return botBuilder;
+        services.AddTelegramBot<TelegramMessagePostModerationBotBuilder<TDecisionMaker>>(config);
+
+        return services.BuildServiceProvider().GetRequiredService<TelegramMessagePostModerationBotBuilder<TDecisionMaker>>();
     }
 }
