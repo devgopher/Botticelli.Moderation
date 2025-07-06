@@ -18,6 +18,7 @@ public class TelegramMessagePostModerationBotBuilder<TDecisionMaker> :
     private TDecisionMaker? _decisionMaker;
     private readonly IFilterChainBuilder _filterChainBuilder = new FilterChainBuilder();
     private IDecisionMakerBuilder<TDecisionMaker> _decisionMakerBuilder = new DecisionMakerBuilder<TDecisionMaker>();
+    private ModerationCycle? _moderationCycle;
 
     private IFilter? _filterChain;
 
@@ -109,19 +110,10 @@ public class TelegramMessagePostModerationBotBuilder<TDecisionMaker> :
 
         _filterChain ??= _filterChainBuilder.Build();
         _decisionMaker ??= _decisionMakerBuilder.Build();
+     
+        _moderationCycle ??= new ModerationCycle(_executors, _decisionMaker, _filterChain);
         
-        AddOnMessageReceived(async (_, args) =>
-        {
-            // Filtering
-            var filterResult = await _filterChain!.FilterMessageAsync(args.Message);
-            
-            // Decision-making
-            var decision = await _decisionMaker.MakeDecision(filterResult);
-
-            // Decision executing
-            foreach (var executor in _executors) 
-                await executor.Execute(args.Message, decision);
-        });
+        AddOnMessageReceived(async (_, args) => { await _moderationCycle.Process(args); });
 
         return base.Build();
     }
