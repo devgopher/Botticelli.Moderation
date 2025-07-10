@@ -10,8 +10,8 @@ namespace Botticelli.Moderation.Api.Builders;
 /// <summary>
 ///     A builder class for MessagePostModerationSender
 /// </summary>
-public class TelegramMessagePostModerationBotBuilder<TDecisionMaker>(bool isStandalone = false) :
-    TelegramBotBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>>(isStandalone),
+public class TelegramMessagePostModerationBotBuilder<TDecisionMaker> :
+    TelegramBotBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>>,
     IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>, TDecisionMaker>
     where TDecisionMaker : IDecisionMaker, new()
 {
@@ -120,6 +120,13 @@ public class TelegramMessagePostModerationBotBuilder<TDecisionMaker>(bool isStan
     }
 
     public TelegramMessagePostModerationBotBuilder() : this(false)
+    {
+    }
+
+    /// <summary>
+    ///     A builder class for MessagePostModerationSender
+    /// </summary>
+    public TelegramMessagePostModerationBotBuilder(bool isStandalone = false) : base(isStandalone)
     {
     }
 }
