@@ -1,14 +1,26 @@
-﻿using Botticelli.Framework.Telegram.Extensions;
+﻿using Botticelli.Framework.Telegram;
+using Botticelli.Framework.Telegram.Extensions;
+using Botticelli.Interfaces;
 using Botticelli.Moderation.Api.Extensions;
 using Botticelli.Moderation.Decisions;
+using Botticelli.Moderation.Filters.Links;
+using LinkFilterBot.Decisions;
+using LinksFilterBot.Executors.Telegram;
 using NLog.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services
-    .AddPostModerationBot<BaseDecisionMaker>(builder.Configuration);
+var bot = builder.Services
+    .AddPostModerationBot<BaseDecisionMaker>(builder.Configuration)
+    .WithFilter<LinkFilter>()
+    .WithDecisionMaker(bm => bm.WithRule<LinksRule>())
+    .WithExecutor(new TelegramExecutor())
+    .Build();
 
 builder.Services.AddTelegramLayoutsSupport()
-    .AddLogging(cfg => cfg.AddNLog());
+    .AddLogging(cfg => cfg.AddNLog())
+    .AddSingleton<IBot>(bot);
 
-await builder.Build().RunAsync();
+var app = builder.Build();
+
+await app.RunAsync();

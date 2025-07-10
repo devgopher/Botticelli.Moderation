@@ -17,6 +17,9 @@
       <ProjectReference Include="..\..\botticelli\Botticelli.Framework.Telegram\Botticelli.Framework.Telegram.csproj" />
       <ProjectReference Include="..\..\botticelli\Botticelli.Framework\Botticelli.Framework.csproj" />
       <ProjectReference Include="..\Botticelli.Moderation.Integration.Telegram\Botticelli.Moderation.Integration.Telegram.csproj" />
+      <ProjectReference Include="..\LinkFilterBot.Decisions\LinkFilterBot.Decisions.csproj" />
+      <ProjectReference Include="..\LinksFilterBot.Executors.Telegram\LinksFilterBot.Executors.Telegram.csproj" />
+      <ProjectReference Include="..\LinksFilterBot.Filters.Links\LinksFilterBot.Filters.Links.csproj" />
     </ItemGroup>
 
 </Project>

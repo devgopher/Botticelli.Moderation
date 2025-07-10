@@ -9,8 +9,13 @@ namespace LinksFilterBot.Executors.Telegram;
 /// Represents an executor for handling Telegram messages in the Links Filter Bot.
 /// Implements the <see cref="IExecutor{T}"/> interface for the <see cref="TelegramBot"/>.
 /// </summary>
-public class TelegramExecutor(TelegramBot bot) : IExecutor<TelegramBot>
+public class TelegramExecutor : IExecutor<TelegramBot>
 {
+    /// <summary>
+    ///     A bot instance
+    /// </summary>
+    public TelegramBot? Bot { get; set; }
+    
     /// <summary>
     /// Executes the moderation decision for a given Telegram message.
     /// </summary>
@@ -20,7 +25,10 @@ public class TelegramExecutor(TelegramBot bot) : IExecutor<TelegramBot>
     /// <exception cref="NotImplementedException">Thrown when the method is called, as the implementation is not yet provided.</exception>
     public async Task Execute(Message message, Decision decision, CancellationToken cancellationToken = default)
     {
+        if (Bot == null)
+            throw new NullReferenceException("Bot is null!");
+        
         if (decision.Type == DecisionTypes.Ban)
-            await bot.DeleteMessageAsync(new DeleteMessageRequest(message.Uid, message.ChatIds[0]), cancellationToken);
+            await Bot.DeleteMessageAsync(new DeleteMessageRequest(message.Uid, message.ChatIds[0]), cancellationToken);
     }
 }

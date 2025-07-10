@@ -13,6 +13,8 @@ namespace Botticelli.Moderation.Integration.Interfaces;
 public interface IExecutor<TBot>
     where TBot : IBot<TBot>
 {
+    public TBot? Bot { get; set; }
+    
     /// <summary>
     /// Executes a specified action based on the provided message and decision.
     /// </summary>

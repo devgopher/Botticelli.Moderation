@@ -10,9 +10,10 @@ namespace Botticelli.Moderation.Api.Builders;
 /// <summary>
 ///     A builder class for MessagePostModerationSender
 /// </summary>
-public class TelegramMessagePostModerationBotBuilder<TDecisionMaker> :
-    TelegramBotBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>>,
-    IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>, TDecisionMaker> where TDecisionMaker : IDecisionMaker, new()
+public class TelegramMessagePostModerationBotBuilder<TDecisionMaker>(bool isStandalone = false) :
+    TelegramBotBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>>(isStandalone),
+    IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>, TDecisionMaker>
+    where TDecisionMaker : IDecisionMaker, new()
 {
     private readonly List<IExecutor<TelegramBot>> _executors = new();
     private TDecisionMaker? _decisionMaker;
@@ -21,10 +22,6 @@ public class TelegramMessagePostModerationBotBuilder<TDecisionMaker> :
     private ModerationCycle? _moderationCycle;
 
     private IFilter? _filterChain;
-
-    protected TelegramMessagePostModerationBotBuilder(bool isStandalone) : base(isStandalone)
-    {
-    }
 
     public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>, TDecisionMaker> WithFilter(IFilter filter)
     {
@@ -93,7 +90,7 @@ public class TelegramMessagePostModerationBotBuilder<TDecisionMaker> :
     }
 
     public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>, TDecisionMaker>
-        WithExecutor<TExecutor>(TExecutor executor) where TExecutor : IExecutor<TelegramBot>
+        WithExecutor<TExecutor>(TExecutor executor) where TExecutor : IExecutor<TelegramBot>, new()
     {
         WithExecutor((IExecutor<TelegramBot>)executor);
 
@@ -115,6 +112,14 @@ public class TelegramMessagePostModerationBotBuilder<TDecisionMaker> :
         
         AddOnMessageReceived(async (_, args) => { await _moderationCycle.Process(args); });
 
-        return base.Build();
+        var bot = base.Build();
+
+        foreach (var executor in _executors) executor.Bot = bot;
+        
+        return bot;
+    }
+
+    public TelegramMessagePostModerationBotBuilder() : this(false)
+    {
     }
 }
