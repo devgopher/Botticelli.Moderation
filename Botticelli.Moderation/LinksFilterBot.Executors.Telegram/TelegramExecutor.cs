@@ -28,7 +28,7 @@ public class TelegramExecutor : IExecutor<TelegramBot>
         if (Bot == null)
             throw new NullReferenceException("Bot is null!");
         
-        if (decision.Type == DecisionTypes.Ban)
+        if (decision.Type == DecisionTypes.RemoveMessage)
             await Bot.DeleteMessageAsync(new DeleteMessageRequest(message.Uid, message.ChatIds[0]), cancellationToken);
     }
 }
