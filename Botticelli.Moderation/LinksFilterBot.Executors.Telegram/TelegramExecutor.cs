@@ -6,8 +6,8 @@ using Botticelli.Shared.ValueObjects;
 namespace LinksFilterBot.Executors.Telegram;
 
 /// <summary>
-/// Represents an executor for handling Telegram messages in the Links Filter Bot.
-/// Implements the <see cref="IExecutor{T}"/> interface for the <see cref="TelegramBot"/>.
+///     Represents an executor for handling Telegram messages in the Links Filter Bot.
+///     Implements the <see cref="IExecutor{T}" /> interface for the <see cref="TelegramBot" />.
 /// </summary>
 public class TelegramExecutor : IExecutor<TelegramBot>
 {
@@ -15,9 +15,9 @@ public class TelegramExecutor : IExecutor<TelegramBot>
     ///     A bot instance
     /// </summary>
     public TelegramBot? Bot { get; set; }
-    
+
     /// <summary>
-    /// Executes the moderation decision for a given Telegram message.
+    ///     Executes the moderation decision for a given Telegram message.
     /// </summary>
     /// <param name="message">The Telegram message to be processed.</param>
     /// <param name="decision">The moderation decision to be applied to the message.</param>
@@ -27,7 +27,7 @@ public class TelegramExecutor : IExecutor<TelegramBot>
     {
         if (Bot == null)
             throw new NullReferenceException("Bot is null!");
-        
+
         if (decision.Type == DecisionTypes.RemoveMessage)
             await Bot.DeleteMessageAsync(new DeleteMessageRequest(message.Uid, message.ChatIds[0]), cancellationToken);
     }

@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\botticelli\Botticelli.Framework.Telegram\Botticelli.Framework.Telegram.csproj" />
-      <ProjectReference Include="..\Botticelli.Moderation.Interfaces\Botticelli.Moderation.Interfaces.csproj" />
+        <ProjectReference Include="..\..\botticelli\Botticelli.Framework.Telegram\Botticelli.Framework.Telegram.csproj"/>
+        <ProjectReference Include="..\Botticelli.Moderation.Interfaces\Botticelli.Moderation.Interfaces.csproj"/>
     </ItemGroup>
 
 </Project>

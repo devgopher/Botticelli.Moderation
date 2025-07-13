@@ -4,7 +4,7 @@ namespace Botticelli.Moderation.Integration.Interfaces;
 ///     Defines a contract for building a decision maker with specified rules.
 /// </summary>
 public interface IDecisionMakerBuilder<TDecisionMaker>
-where TDecisionMaker : IDecisionMaker, new()
+    where TDecisionMaker : IDecisionMaker, new()
 {
     /// <summary>
     ///     Gets a value indicating whether any rules have been initialized for the decision maker.
@@ -16,10 +16,13 @@ where TDecisionMaker : IDecisionMaker, new()
     ///     Adds a specific rule to the decision maker.
     /// </summary>
     /// <param name="rule">The rule to add to the decision maker.</param>
-    /// <returns>The current instance of the <see>
+    /// <returns>
+    ///     The current instance of the
+    ///     <see>
     ///         <cref>IDecisionMakerBuilder</cref>
     ///     </see>
-    ///     for method chaining.</returns>
+    ///     for method chaining.
+    /// </returns>
     IDecisionMakerBuilder<TDecisionMaker> WithRule(IRule rule);
 
     /// <summary>

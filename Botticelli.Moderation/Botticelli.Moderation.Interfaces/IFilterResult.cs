@@ -5,22 +5,22 @@ namespace Botticelli.Moderation.Integration.Interfaces;
 public interface IFilterResult
 {
     /// <summary>
-    /// Message ID
+    ///     Message ID
     /// </summary>
     string MessageId { get; set; }
 
     /// <summary>
-    /// Message for a further decision
+    ///     Message for a further decision
     /// </summary>
     public Message Message { get; set; }
-    
+
     /// <summary>
-    /// Passed or not
+    ///     Passed or not
     /// </summary>
     bool Passed { get; set; }
 
     /// <summary>
-    /// Errors occurred during filtration
+    ///     Errors occurred during filtration
     /// </summary>
     string[] Errors { get; set; }
 }

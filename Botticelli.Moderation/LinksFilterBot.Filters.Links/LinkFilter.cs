@@ -5,7 +5,7 @@ using Botticelli.Shared.ValueObjects;
 namespace Botticelli.Moderation.Filters.Links;
 
 /// <summary>
-/// A filter that checks messages for the presence of HTTP or HTTPS links.
+///     A filter that checks messages for the presence of HTTP or HTTPS links.
 /// </summary>
 public class LinkFilter : FilterBase
 {
@@ -13,7 +13,7 @@ public class LinkFilter : FilterBase
     private const string Pattern = @"\bhttps?://\S+\b";
 
     /// <summary>
-    /// Filters the provided message to determine if it contains any links.
+    ///     Filters the provided message to determine if it contains any links.
     /// </summary>
     /// <param name="message">The message to be filtered.</param>
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
@@ -30,7 +30,7 @@ public class LinkFilter : FilterBase
         // Check if the message body is null or does not contain any links.
         if (message.Body == null || !Regex.IsMatch(message.Body, Pattern))
             return Task.FromResult<IFilterResult>(result);
-        
+
         // If a link is found, set the result to not passed and add an error message.
         result.Passed = false;
         result.Errors = new[] { "An http link was found!" };

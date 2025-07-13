@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\botticelli\Botticelli.Interfaces\Botticelli.Interfaces.csproj" />
-      <ProjectReference Include="..\Botticelli.Moderation.Shared\Botticelli.Moderation.Shared.csproj" />
+        <ProjectReference Include="..\..\botticelli\Botticelli.Interfaces\Botticelli.Interfaces.csproj"/>
+        <ProjectReference Include="..\Botticelli.Moderation.Shared\Botticelli.Moderation.Shared.csproj"/>
     </ItemGroup>
 
 </Project>

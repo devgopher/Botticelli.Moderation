@@ -4,24 +4,25 @@ using Botticelli.Shared.ValueObjects;
 namespace Botticelli.Moderation.Filters;
 
 /// <summary>
-/// Message filtering result
+///     Message filtering result
 /// </summary>
 public class FilterResult : IFilterResult
 {
     private bool _passed;
-    
-    /// <inheritdoc/>
+
+    /// <inheritdoc />
     public required string MessageId { get; set; }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public required Message Message { get; set; }
 
-    /// <inheritdoc/>
-    public bool Passed {
+    /// <inheritdoc />
+    public bool Passed
+    {
         get => Errors.Length == 0 && _passed;
-        set => _passed = value; 
+        set => _passed = value;
     }
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public string[] Errors { get; set; } = [];
 }

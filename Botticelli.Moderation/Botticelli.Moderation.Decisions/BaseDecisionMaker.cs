@@ -13,9 +13,9 @@ public class BaseDecisionMaker : IDecisionMaker
 
     public BaseDecisionMaker()
     {
-        Rules = new(5);
+        Rules = new List<IRule>(5);
     }
-    
+
     /// <summary>
     ///     Initializes a new instance of the <see cref="rules" /> class with the specified rules.
     /// </summary>
@@ -33,7 +33,8 @@ public class BaseDecisionMaker : IDecisionMaker
     /// <param name="filterResult">The filter result used to determine the decision.</param>
     /// <param name="cancellationToken">A cancellation token to signal the operation's cancellation.</param>
     /// <returns>A task that represents the asynchronous operation, containing the resulting <see cref="Decision" />.</returns>
-    public virtual async Task<Decision> MakeDecision(IFilterResult filterResult, CancellationToken cancellationToken = default)
+    public virtual async Task<Decision> MakeDecision(IFilterResult filterResult,
+        CancellationToken cancellationToken = default)
     {
         // Implement decision-making logic based on the rules
         var decision = new Decision

@@ -4,14 +4,15 @@ using Botticelli.Shared.ValueObjects;
 namespace Botticelli.Moderation.Filters;
 
 /// <summary>
-/// Represents a chain of filters that can be executed
+///     Represents a chain of filters that can be executed
 /// </summary>
 public class FilterChain(IReadOnlyCollection<IFilter> filters) : IFilter
 {
-    private readonly IReadOnlyCollection<IFilter> _filters = filters ?? throw new ArgumentNullException(nameof(filters));
+    private readonly IReadOnlyCollection<IFilter>
+        _filters = filters ?? throw new ArgumentNullException(nameof(filters));
 
     /// <summary>
-    /// Executes all filters in parallel and returns true only if all filters return true
+    ///     Executes all filters in parallel and returns true only if all filters return true
     /// </summary>
     /// <returns>True if all filters pass, false otherwise</returns>
     public async Task<IFilterResult> FilterMessageAsync(Message message, CancellationToken cancellationToken = default)
@@ -30,7 +31,8 @@ public class FilterChain(IReadOnlyCollection<IFilter> filters) : IFilter
                     ]
                 };
 
-            var filterTasks = _filters.Select(filter => filter.FilterMessageAsync(message, cancellationToken)).ToArray();
+            var filterTasks = _filters.Select(filter => filter.FilterMessageAsync(message, cancellationToken))
+                .ToArray();
             var results = await Task.WhenAll(filterTasks);
 
             var result = new FilterResult
@@ -42,7 +44,8 @@ public class FilterChain(IReadOnlyCollection<IFilter> filters) : IFilter
             };
 
             return result;
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             return new FilterResult
             {

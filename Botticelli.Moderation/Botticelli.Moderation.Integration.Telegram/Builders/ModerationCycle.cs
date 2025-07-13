@@ -13,12 +13,12 @@ public sealed class ModerationCycle(
     {
         // Filtering
         var filterResult = await filterChain.FilterMessageAsync(args.Message);
-            
+
         // Decision-making
         var decision = await decisionMaker?.MakeDecision(filterResult)!;
 
         // Decision executing
-        foreach (var executor in executors) 
+        foreach (var executor in executors)
             await executor.Execute(args.Message, decision);
     }
 }

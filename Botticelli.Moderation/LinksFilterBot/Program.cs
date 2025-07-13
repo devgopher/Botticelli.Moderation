@@ -1,5 +1,4 @@
-﻿using Botticelli.Framework.Telegram;
-using Botticelli.Framework.Telegram.Extensions;
+﻿using Botticelli.Framework.Telegram.Extensions;
 using Botticelli.Interfaces;
 using Botticelli.Moderation.Api.Extensions;
 using Botticelli.Moderation.Decisions;
@@ -17,9 +16,9 @@ var bot = builder.Services
     .WithExecutor(new TelegramExecutor())
     .Build();
 
-    builder.Services.AddTelegramLayoutsSupport()
-        .AddLogging(cfg => cfg.AddNLog())
-        .AddSingleton<IBot>(bot);
+builder.Services.AddTelegramLayoutsSupport()
+    .AddLogging(cfg => cfg.AddNLog())
+    .AddSingleton<IBot>(bot);
 
 var app = builder.Build();
 

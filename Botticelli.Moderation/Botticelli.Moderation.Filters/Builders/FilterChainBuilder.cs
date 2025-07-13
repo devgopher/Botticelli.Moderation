@@ -5,7 +5,7 @@ using Botticelli.Shared.ValueObjects;
 namespace Botticelli.Moderation.Filters.Builders;
 
 /// <summary>
-/// Builder for creating filters
+///     Builder for creating filters
 /// </summary>
 public class FilterChainBuilder : IFilterChainBuilder
 {
@@ -16,10 +16,12 @@ public class FilterChainBuilder : IFilterChainBuilder
     }
 
     public FilterChainBuilder(ICollection<IFilter>? filters)
-        => _filters.AddRange(filters ?? []);
-    
+    {
+        _filters.AddRange(filters ?? []);
+    }
+
     /// <summary>
-    /// Adds a filter to the chain
+    ///     Adds a filter to the chain
     /// </summary>
     /// <param name="filter">Filter instance</param>
     /// <returns>Current builder instance</returns>
@@ -28,39 +30,42 @@ public class FilterChainBuilder : IFilterChainBuilder
         _filters.Add(filter);
         return this;
     }
-    
-    
+
+
     /// <summary>
-    /// Adds a func-based filter to the chain
+    ///     Adds a func-based filter to the chain
     /// </summary>
     /// <returns>Current builder instance</returns>
     public IFilterChainBuilder WithFuncFilter(Func<Message, IFilterResult> action)
     {
         _filters.Add(FilterFactory.CreateFuncBasedFilter(action));
-        
+
         return this;
     }
 
     /// <summary>
-    /// Adds a filter to the chain by creating its instance
+    ///     Adds a filter to the chain by creating its instance
     /// </summary>
     /// <typeparam name="TFilter">Type of filter</typeparam>
     /// <returns>Current builder instance</returns>
     public IFilterChainBuilder WithFilter<TFilter>() where TFilter : IFilter, new()
     {
         _filters.Add(new TFilter());
-        
+
         return this;
     }
-    
+
     /// <summary>
-    /// Has initialized filters or not
+    ///     Has initialized filters or not
     /// </summary>
     public bool HasFilters => _filters.Any();
 
     /// <summary>
-    /// Creates a collection of filters
+    ///     Creates a collection of filters
     /// </summary>
     /// <returns>List of created filters</returns>
-    public IFilter Build() => new FilterChain(_filters.AsReadOnly());
+    public IFilter Build()
+    {
+        return new FilterChain(_filters.AsReadOnly());
+    }
 }
