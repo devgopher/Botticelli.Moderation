@@ -22,5 +22,5 @@ public interface IRule
     /// <param name="filterResult">The filter result used to make the decision.</param>
     /// <param name="token"></param>
     /// <returns>The resulting <see cref="Decision" /> based on the rule.</returns>
-    Task<Decision> Execute(IFilterResult filterResult, CancellationToken token);
+    Task<RuleDecision> Execute(IFilterResult filterResult, CancellationToken token);
 }

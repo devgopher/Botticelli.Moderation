@@ -6,7 +6,7 @@ namespace LinkFilterBot.Decisions;
 /// <summary>
 ///     Represents a rule that processes filter results related to links.
 /// </summary>
-public class LinksRule : IRule
+public class LinksRemoveRule : IRule
 {
     /// <summary>
     ///     Determines whether the rule is applicable to the given filter result.
@@ -24,23 +24,25 @@ public class LinksRule : IRule
     /// <param name="filterResult">The filter result to process.</param>
     /// <param name="token">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>A task that represents the asynchronous operation, containing the decision made.</returns>
-    public async Task<Decision> Execute(IFilterResult filterResult, CancellationToken token)
+    public async Task<RuleDecision> Execute(IFilterResult filterResult, CancellationToken token)
     {
         if (!filterResult.Passed)
-            return new Decision
+            return new RuleDecision
             {
                 Id = Guid.NewGuid().ToString(),
                 Comments = string.Join(',', filterResult.Errors),
                 Reasons = filterResult.Errors.ToList(),
-                Type = DecisionTypes.RemoveMessage
+                Type = DecisionTypes.RemoveMessage,
+                UtcDateTime = DateTime.UtcNow
             };
 
-        return new Decision
+        return new RuleDecision
         {
             Id = Guid.NewGuid().ToString(),
             Comments = string.Join(',', filterResult.Errors),
             Reasons = filterResult.Errors.ToList(),
-            Type = DecisionTypes.Passed
+            Type = DecisionTypes.Passed,
+            UtcDateTime = DateTime.UtcNow
         };
     }
 }

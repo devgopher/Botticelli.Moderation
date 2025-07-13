@@ -33,7 +33,7 @@ public class LinkFilter : FilterBase
 
         // If a link is found, set the result to not passed and add an error message.
         result.Passed = false;
-        result.Errors = new[] { "An http link was found!" };
+        result.Errors = ["An http link was found!"];
 
         return Task.FromResult<IFilterResult>(result);
     }

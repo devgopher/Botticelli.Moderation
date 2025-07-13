@@ -16,6 +16,6 @@ public static class DecisionMakerExtensions
     public static IDecisionMakerBuilder<BaseDecisionMaker> AddRules(
         this IDecisionMakerBuilder<BaseDecisionMaker> decisionMakerBuilder)
     {
-        return decisionMakerBuilder.WithRule<LinksRule>();
+        return decisionMakerBuilder.WithRule<LinksWarnRule>();
     }
 }

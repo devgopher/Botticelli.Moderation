@@ -12,8 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 var bot = builder.Services
     .AddPostModerationBot<BaseDecisionMaker>(builder.Configuration)
     .WithFilter<LinkFilter>()
-    .WithDecisionMaker(bm => bm.WithRule<LinksRule>())
-    .WithExecutor(new TelegramExecutor())
+    .WithDecisionMaker(bm => bm
+        .WithRule<LinksRemoveRule>()
+        .WithRule<LinksWarnRule>())
+    .WithExecutor(new TelegramRemoveLinkExecutor())
+    .WithExecutor(new TelegramWarnUserLinkExecutor())
     .Build();
 
 builder.Services.AddTelegramLayoutsSupport()

@@ -21,7 +21,12 @@ public static class DecisionTypes
     public static DecisionType RemoveMessage => new(3, "RemoveMessage");
 
     /// <summary>
+    ///     Gets the decision type representing a message editing decision.
+    /// </summary>
+    public static DecisionType EditMessage => new(4, "EditMessage");
+    
+    /// <summary>
     ///     Gets the decision type representing a ban decision.
     /// </summary>
-    public static DecisionType Ban => new(4, "Ban");
+    public static DecisionType Ban => new(5, "Ban");
 }

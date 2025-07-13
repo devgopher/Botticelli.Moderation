@@ -77,7 +77,9 @@ public class BaseDecisionMaker : IDecisionMaker
                 decision.Comments += $"\n{execute.Comments}";
                 decision.Reasons.AddRange(execute.Reasons);
                 decision.AdditionalParams?.AddRange(execute.AdditionalParams ?? []);
-                decision.Type = execute.Type;
+                decision.Types ??= [];
+                if (execute.Type != null) 
+                    decision.Types.Add(execute.Type);
             }
             finally
             {
@@ -93,7 +95,7 @@ public class BaseDecisionMaker : IDecisionMaker
     /// <param name="rule"></param>
     /// <param name="token"></param>
     /// <returns></returns>
-    private static async Task<Decision?> ApplyRule(IFilterResult filterResult, IRule rule, CancellationToken token)
+    private static async Task<RuleDecision?> ApplyRule(IFilterResult filterResult, IRule rule, CancellationToken token)
     {
         return rule.IsApplicable(filterResult) ? await rule.Execute(filterResult, token) : null;
     }
