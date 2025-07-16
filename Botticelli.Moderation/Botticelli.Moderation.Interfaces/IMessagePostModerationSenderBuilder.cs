@@ -28,8 +28,9 @@ public interface IMessagePostModerationSenderBuilder<TBot, TBotBuilder, TDecisio
         Action<IExecutor<TBot>> actionBuilder)
         where TExecutor : IExecutor<TBot>, new();
 
-    public IMessagePostModerationSenderBuilder<TBot, TBotBuilder, TDecisionMaker>
-        WithExecutor(IExecutor<TBot> executor);
+    public IMessagePostModerationSenderBuilder<TBot, TBotBuilder, TDecisionMaker> WithExecutor<TExecutor>()
+        where TExecutor : IExecutor<TBot>, new();
+    
 
     public IMessagePostModerationSenderBuilder<TBot, TBotBuilder, TDecisionMaker> WithExecutor<TExecutor>(
         TExecutor executor)

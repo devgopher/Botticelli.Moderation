@@ -94,6 +94,11 @@ public class TelegramMessagePostModerationBotBuilder<TDecisionMaker> :
     }
 
     public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>, TDecisionMaker>
+        WithExecutor<TExecutor>()
+        where TExecutor : IExecutor<TelegramBot>, new()
+        => WithExecutor(new TExecutor());
+
+    public IMessagePostModerationSenderBuilder<TelegramBot, TelegramBotBuilder<TelegramBot>, TDecisionMaker>
         WithExecutor(IExecutor<TelegramBot> executor)
     {
         _executors.Add(executor);
