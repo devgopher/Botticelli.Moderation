@@ -17,6 +17,8 @@ public static class BotExtensions
             config,
             botBuilder => botBuilder.AddServices(services));
 
+        botBuilder.Prepare();
+        
         return botBuilder;
     }
 }
