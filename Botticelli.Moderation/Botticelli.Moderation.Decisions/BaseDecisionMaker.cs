@@ -51,7 +51,7 @@ public class BaseDecisionMaker : IDecisionMaker
                 await GetDecisionByRule(filterResult, cancellationToken, rule, decision).ConfigureAwait(false);
         else
             await Parallel.ForEachAsync(Rules, cancellationToken,
-                async (rule, token) => { await GetDecisionByRule(filterResult, token, rule, decision); });
+                async (rule, token) => await GetDecisionByRule(filterResult, token, rule, decision));
 
         // Return a default decision if no rules apply
         return decision;

@@ -41,7 +41,7 @@ public class TelegramWarnUserLinkExecutor : IExecutor<TelegramBot>
                     Type = Message.MessageType.Messaging,
                     ChatIds = message.ChatIds,
                     Subject = string.Empty,
-                    Body = $"Dear, {message.From?.NickName}! No URLs allowed!"
+                    Body = $"Dear, @{message.From?.NickName}! No URLs allowed!"
                 }
             }, cancellationToken);
         }
