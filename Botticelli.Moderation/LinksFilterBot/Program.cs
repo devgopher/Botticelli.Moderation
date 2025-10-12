@@ -17,7 +17,7 @@ var bot = builder.Services
         .WithRule<LinksWarnRule>())
     .WithExecutor(new TelegramRemoveLinkExecutor())
     .WithExecutor(new TelegramWarnUserLinkExecutor())
-    .Build();
+    .Build(builder.Services.BuildServiceProvider());
 
 builder.Services.AddTelegramLayoutsSupport()
     .AddLogging(cfg => cfg.AddNLog())

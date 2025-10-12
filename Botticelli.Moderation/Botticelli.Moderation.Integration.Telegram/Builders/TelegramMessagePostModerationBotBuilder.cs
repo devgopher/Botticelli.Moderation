@@ -114,7 +114,7 @@ public class TelegramMessagePostModerationBotBuilder<TDecisionMaker> :
         return this;
     }
 
-    public override TelegramBot? Build()
+    public override TelegramBot? Build(IServiceProvider serviceProvider)
     {
         if (!_filterChainBuilder.HasFilters)
             throw new BotLoadingException("No filters were provided!");
@@ -129,7 +129,7 @@ public class TelegramMessagePostModerationBotBuilder<TDecisionMaker> :
 
         AddOnMessageReceived(async (_, args) => { await _moderationCycle.Process(args); });
 
-        var bot = base.Build();
+        var bot = base.Build(serviceProvider);
 
         foreach (var executor in _executors) executor.Bot = bot;
 

@@ -36,5 +36,5 @@ public interface IMessagePostModerationSenderBuilder<TBot, TBotBuilder, TDecisio
         TExecutor executor)
         where TExecutor : IExecutor<TBot>, new();
 
-    public TBot? Build();
+    public TBot? Build(IServiceProvider serviceProvider);
 }

@@ -1,6 +1,7 @@
 ﻿using Botticelli.Framework.Telegram;
 using Botticelli.Moderation.Integration.Interfaces;
 using Botticelli.Moderation.Shared;
+using Botticelli.Shared.API.Client.Requests;
 using Botticelli.Shared.ValueObjects;
 
 namespace LinksFilterBot.Executors.Telegram;
