@@ -21,18 +21,6 @@ public class FilterChainBuilder : IFilterChainBuilder
     }
 
     /// <summary>
-    ///     Adds a filter to the chain
-    /// </summary>
-    /// <param name="filter">Filter instance</param>
-    /// <returns>Current builder instance</returns>
-    public IFilterChainBuilder WithFilter(IFilter filter)
-    {
-        _filters.Add(filter);
-        return this;
-    }
-
-
-    /// <summary>
     ///     Adds a func-based filter to the chain
     /// </summary>
     /// <returns>Current builder instance</returns>
@@ -43,6 +31,18 @@ public class FilterChainBuilder : IFilterChainBuilder
         return this;
     }
 
+    /// <summary>
+    ///     Adds a filter to the chain
+    /// </summary>
+    /// <param name="filter">Filter instance</param>
+    /// <returns>Current builder instance</returns>
+    public IFilterChainBuilder WithFilter(IFilter filter)
+    {
+        _filters.Add(filter);
+        
+        return this;
+    }
+    
     /// <summary>
     ///     Adds a filter to the chain by creating its instance
     /// </summary>
@@ -58,14 +58,11 @@ public class FilterChainBuilder : IFilterChainBuilder
     /// <summary>
     ///     Has initialized filters or not
     /// </summary>
-    public bool HasFilters => _filters.Any();
+    public bool HasFilters => _filters.Count != 0;
 
     /// <summary>
     ///     Creates a collection of filters
     /// </summary>
     /// <returns>List of created filters</returns>
-    public IFilter Build()
-    {
-        return new FilterChain(_filters.AsReadOnly());
-    }
+    public IFilter Build() => new FilterChain(_filters.AsReadOnly());
 }

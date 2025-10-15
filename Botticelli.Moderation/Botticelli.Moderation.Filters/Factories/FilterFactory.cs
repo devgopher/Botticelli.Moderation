@@ -19,6 +19,4 @@ public static class FilterFactory
 
         return new FuncFilter(action);
     }
-
-    // You can add more methods here to create different types of filters in the future.
 }

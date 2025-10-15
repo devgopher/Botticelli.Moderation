@@ -38,8 +38,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Controls", "..\b
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Interfaces", "Botticelli.Moderation.Interfaces\Botticelli.Moderation.Interfaces.csproj", "{D7158A2F-1871-4989-A10B-8529F6E97F01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Integration", "Botticelli.Moderation.Integration\Botticelli.Moderation.Integration.csproj", "{7E233672-6655-4C49-8C99-2B8F4D211CE4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Shared", "Botticelli.Moderation.Shared\Botticelli.Moderation.Shared.csproj", "{56AA6E9E-5917-42E9-8471-A3C351E02ABE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Botticelli.Moderation.Filters.Tests", "Botticelli.Moderation.Filters.Tests\Botticelli.Moderation.Filters.Tests.csproj", "{5CBA1487-CFAE-41EA-99F3-5A98E7680A4B}"
@@ -55,6 +53,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinksFilterBot.Executors.Telegram", "LinksFilterBot.Executors.Telegram\LinksFilterBot.Executors.Telegram.csproj", "{4169B039-B733-41B9-A000-CF8D58312039}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkFilterBot.Decisions", "LinkFilterBot.Decisions\LinkFilterBot.Decisions.csproj", "{B909EE4F-9F25-436E-B9FB-E8F117C02085}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integrations", "{2FE72AFF-FEC4-4E51-B862-1FA4B2AE49AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{605420A4-BA01-4F4B-86CF-A7ED98B429EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -134,10 +136,6 @@ Global
 		{D7158A2F-1871-4989-A10B-8529F6E97F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7158A2F-1871-4989-A10B-8529F6E97F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7158A2F-1871-4989-A10B-8529F6E97F01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E233672-6655-4C49-8C99-2B8F4D211CE4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56AA6E9E-5917-42E9-8471-A3C351E02ABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56AA6E9E-5917-42E9-8471-A3C351E02ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56AA6E9E-5917-42E9-8471-A3C351E02ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -182,5 +180,7 @@ Global
 		{1FC2A1B4-EF4F-4DCB-A545-EF48744FA8BE} = {7EBEF698-A382-4C0E-8B41-EFCDC8DA80B1}
 		{4169B039-B733-41B9-A000-CF8D58312039} = {7EBEF698-A382-4C0E-8B41-EFCDC8DA80B1}
 		{B909EE4F-9F25-436E-B9FB-E8F117C02085} = {7EBEF698-A382-4C0E-8B41-EFCDC8DA80B1}
+		{3540FF6D-5577-4661-BDAC-E4943D785548} = {2FE72AFF-FEC4-4E51-B862-1FA4B2AE49AF}
+		{5CBA1487-CFAE-41EA-99F3-5A98E7680A4B} = {605420A4-BA01-4F4B-86CF-A7ED98B429EE}
 	EndGlobalSection
 EndGlobal

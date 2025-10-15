@@ -21,7 +21,6 @@
         <ProjectReference Include="..\..\botticelli\Botticelli.Shared\Botticelli.Shared.csproj"/>
         <ProjectReference Include="..\Botticelli.Moderation.Decisions\Botticelli.Moderation.Decisions.csproj"/>
         <ProjectReference Include="..\Botticelli.Moderation.Filters\Botticelli.Moderation.Filters.csproj"/>
-        <ProjectReference Include="..\Botticelli.Moderation.Integration\Botticelli.Moderation.Integration.csproj"/>
         <ProjectReference Include="..\Botticelli.Moderation.Interfaces\Botticelli.Moderation.Interfaces.csproj"/>
     </ItemGroup>
 
