@@ -24,25 +24,25 @@ public class LinksRemoveRule : IRule
     /// <param name="filterResult">The filter result to process.</param>
     /// <param name="token">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>A task that represents the asynchronous operation, containing the decision made.</returns>
-    public async Task<RuleDecision> Execute(IFilterResult filterResult, CancellationToken token)
+    public Task<RuleDecision> Execute(IFilterResult filterResult, CancellationToken token)
     {
         if (!filterResult.Passed)
-            return new RuleDecision
+            return Task.FromResult(new RuleDecision
             {
                 Id = Guid.NewGuid().ToString(),
                 Comments = string.Join(',', filterResult.Errors),
                 Reasons = filterResult.Errors.ToList(),
                 Type = DecisionTypes.RemoveMessage,
                 UtcDateTime = DateTime.UtcNow
-            };
+            });
 
-        return new RuleDecision
+        return Task.FromResult(new RuleDecision
         {
             Id = Guid.NewGuid().ToString(),
             Comments = string.Join(',', filterResult.Errors),
             Reasons = filterResult.Errors.ToList(),
             Type = DecisionTypes.Passed,
             UtcDateTime = DateTime.UtcNow
-        };
+        });
     }
 }

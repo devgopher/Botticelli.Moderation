@@ -1,6 +1,8 @@
-﻿using Botticelli.Framework.Telegram;
+﻿using Botticelli.Framework.Exceptions;
+using Botticelli.Framework.Telegram;
 using Botticelli.Moderation.Integration.Interfaces;
 using Botticelli.Moderation.Shared;
+using Botticelli.Moderation.Shared.Extensions;
 using Botticelli.Shared.API.Client.Requests;
 using Botticelli.Shared.ValueObjects;
 
@@ -24,12 +26,11 @@ public class TelegramWarnUserLinkExecutor : IExecutor<TelegramBot>
     /// <param name="decision">The moderation decision to be applied to the message.</param>
     /// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
     /// <exception cref="NullReferenceException">Thrown when the <see cref="Bot"/> property is null.</exception>
-    /// <exception cref="NotImplementedException">Thrown when the method is called, as the implementation is not yet provided.</exception>
     public async Task Execute(Message message, Decision decision, CancellationToken cancellationToken = default)
     {
         // Check if the Bot instance is null and throw an exception if it is.
         if (Bot == null)
-            throw new NullReferenceException("Bot is null!");
+            throw new ModerationException("Bot is null!");
 
         // If the decision type is to remove the message, delete it using the bot.
         if (decision.Types != null && decision.Types.Contains(DecisionTypes.Warning))

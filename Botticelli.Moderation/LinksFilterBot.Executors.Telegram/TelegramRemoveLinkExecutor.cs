@@ -1,6 +1,7 @@
 ﻿using Botticelli.Framework.Telegram;
 using Botticelli.Moderation.Integration.Interfaces;
 using Botticelli.Moderation.Shared;
+using Botticelli.Moderation.Shared.Extensions;
 using Botticelli.Shared.API.Client.Requests;
 using Botticelli.Shared.ValueObjects;
 
@@ -27,7 +28,7 @@ public class TelegramRemoveLinkExecutor : IExecutor<TelegramBot>
     public async Task Execute(Message message, Decision decision, CancellationToken cancellationToken = default)
     {
         if (Bot == null)
-            throw new NullReferenceException("Bot is null!");
+            throw new ModerationException("Bot is null!");
 
         if (decision.Types != null && decision.Types.Contains(DecisionTypes.RemoveMessage))
             await Bot.DeleteMessageAsync(new DeleteMessageRequest(message.Uid, message.ChatIds[0]), cancellationToken);

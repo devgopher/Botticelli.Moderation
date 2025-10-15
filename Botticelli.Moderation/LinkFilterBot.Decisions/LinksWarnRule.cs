@@ -25,12 +25,12 @@ public class LinksWarnRule : IRule
     /// <param name="filterResult">The filter result to process.</param>
     /// <param name="token">A cancellation token that can be used to cancel the operation.</param>
     /// <returns>A task that represents the asynchronous operation, containing the decision made.</returns>
-    public async Task<RuleDecision> Execute(IFilterResult filterResult, CancellationToken token)
+    public Task<RuleDecision> Execute(IFilterResult filterResult, CancellationToken token)
     {
         // Check if the filter result indicates that the message did not pass the filter.
         if (!filterResult.Passed)
         {
-            return new RuleDecision
+            return Task.FromResult(new RuleDecision
             {
                 Id = Guid.NewGuid()
                     .ToString(),
@@ -38,17 +38,17 @@ public class LinksWarnRule : IRule
                 Reasons = filterResult.Errors.ToList(),
                 Type = DecisionTypes.Warning,
                 UtcDateTime = DateTime.UtcNow
-            };
+            });
         }
 
         // If the message passed the filter, return a decision indicating it is acceptable.
-        return new RuleDecision
+        return Task.FromResult(new RuleDecision
         {
             Id = Guid.NewGuid().ToString(),
             Comments = "No links found in the message.",
             Reasons = filterResult.Errors.ToList(),
             Type = DecisionTypes.Passed,
             UtcDateTime = DateTime.UtcNow
-        };
+        });
     }
 }
